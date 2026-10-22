@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f8f8f5">
+  <meta name="description" content="ShaunKetsu Awards 2026 — a personal celebration of anime, characters, movies, moments, and media.">
+  <title>ShaunKetsu Awards 2026</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Archivo+Black&family=DM+Sans:wght@400;500;700;800&display=swap');
+
+    :root {
+      --paper: #f8f8f5;
+      --ink: #17191d;
+      --blue: #078fe8;
+      --blue-dark: #0069bb;
+      --lime: #c7ff36;
+      --pink: #ff5ca8;
+      --orange: #ff8248;
+      --muted: #62666c;
+      --line: #17191d;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      color: var(--ink); background: var(--paper);
+      font-family: "DM Sans", sans-serif;
+      overflow-x: hidden;
+      background-image: radial-gradient(#17191d17 0.7px, transparent 0.7px);
+      background-size: 7px 7px;
+    }
+    a { color: inherit; text-decoration: none; }
+    button { font: inherit; }
+    .ticker {
+      overflow: hidden; white-space: nowrap; background: var(--blue); color: white;
+      border-bottom: 3px solid var(--ink); padding: 9px 0;
+      font-size: 11px; font-weight: 800; letter-spacing: 2px;
+    }
+    .ticker span { display: inline-block; padding-left: 100%; animation: ticker 25s linear infinite; }
+    @keyframes ticker { to { transform: translateX(-100%); } }
+    .nav {
+      display: flex; align-items: center; justify-content: space-between; gap: 18px;
+      padding: 19px 6%; border-bottom: 2px solid var(--ink); background: var(--paper);
+    }
+    .logo { font: 28px/0.95 "Archivo Black", sans-serif; letter-spacing: -1.8px; }
+    .logo span { color: var(--blue); }
+    .nav-right { display: flex; align-items: center; gap: 18px; font-size: 11px; font-weight: 800; text-transform: uppercase; }
+    .nav-right a:hover { color: var(--blue-dark); }
+    .year-chip { background: var(--lime); border: 2px solid var(--ink); padding: 8px 11px; transform: rotate(2deg); }
+    .hero {
+      min-height: 610px; position: relative; isolation: isolate; overflow: hidden;
+      padding: 66px 6% 55px; border-bottom: 3px solid var(--ink);
+      display: flex; align-items: center;
+      background: linear-gradient(100deg, #f8f8f5 0%, #f8f8f5 42%, #f8f8f5b8 60%, #f8f8f500 100%);
+    }
+    .hero::before {
+      content: ""; position: absolute; z-index: -2; inset: 0 0 0 34%;
+      background: url("assets/shaunketsu-collage.jpg") center 35% / cover no-repeat;
+      opacity: .96; clip-path: polygon(13% 0,100% 0,100% 100%,0 100%,8% 70%,0 47%,13% 26%);
+    }
+    .hero::after {
+      content: ""; position: absolute; z-index: -1; inset: 0;
+      background: linear-gradient(90deg, var(--paper) 0%, #f8f8f5f2 32%, #f8f8f5a8 49%, transparent 74%);
+      pointer-events: none;
+    }
+    .hero-content { width: min(760px, 72%); position: relative; }
+    .eyebrow { font-size: 11px; letter-spacing: 3px; font-weight: 800; text-transform: uppercase; }
+    .eyebrow .dot { display: inline-block; width: 10px; height: 10px; background: var(--pink); border: 2px solid var(--ink); border-radius: 50%; margin-right: 7px; }
+    h1, h2, h3 { font-family: "Archivo Black", sans-serif; text-transform: uppercase; }
+    h1 { margin: 22px 0 15px; font-size: clamp(60px, 10.3vw, 145px); line-height: .82; letter-spacing: -7px; }
+    h1 .blue { color: var(--blue); display: block; text-shadow: 4px 4px 0 var(--ink); }
+    h1 .outline { -webkit-text-stroke: 2px var(--ink); color: transparent; }
+    .hero-sub { max-width: 420px; margin: 22px 0; font-size: 15px; line-height: 1.75; font-weight: 500; }
+    .scribble {
+      display: inline-block; padding: 8px 13px; background: var(--lime); border: 2px solid var(--ink);
+      font-size: 11px; font-weight: 800; letter-spacing: 1px; transform: rotate(-2deg);
+      box-shadow: 4px 4px 0 var(--ink);
+    }
+    .actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 27px; }
+    .btn {
+      display: inline-flex; justify-content: center; align-items: center; gap: 8px;
+      padding: 14px 18px; border: 2px solid var(--ink); background: var(--paper);
+      font-size: 11px; font-weight: 800; letter-spacing: 1px; cursor: pointer;
+      box-shadow: 4px 4px 0 var(--ink); transition: transform .16s, box-shadow .16s;
+    }
+    .btn:hover { transform: translate(3px,3px); box-shadow: 1px 1px 0 var(--ink); }
+    .btn.blue { background: var(--blue); color: white; }
+    .sticker {
+      position: absolute; right: 7%; top: 8%; z-index: 2; width: 105px; height: 105px;
+      display: grid; place-items: center; text-align: center; border: 3px solid var(--ink);
+      border-radius: 50%; background: var(--pink); color: var(--ink); font-size: 12px;
+      font-weight: 900; transform: rotate(12deg); box-shadow: 5px 5px 0 var(--ink);
+    }
+    .section { padding: 66px 6%; border-bottom: 2px solid var(--ink); }
+    .section-head { display: flex; justify-content: space-between; align-items: end; gap: 20px; margin-bottom: 27px; }
+    .section-head h2 { font-size: clamp(35px, 5vw, 65px); letter-spacing: -2px; line-height: .95; }
+    .section-head p { max-width: 250px; color: var(--muted); font-size: 12px; line-height: 1.6; }
+    .feature {
+      display: grid; grid-template-columns: 1.25fr .75fr; min-height: 270px;
+      border: 3px solid var(--ink); box-shadow: 7px 7px 0 var(--ink); background: var(--blue); color: white;
+    }
+    .feature-copy { padding: 32px; display: flex; flex-direction: column; align-items: start; justify-content: center; }
+    .feature-copy .mini { font-size: 10px; font-weight: 800; letter-spacing: 3px; color: var(--lime); }
+    .feature h3 { margin: 13px 0; font-size: clamp(34px, 5.5vw, 66px); line-height: .93; letter-spacing: -2px; }
+    .feature p { max-width: 390px; font-size: 13px; line-height: 1.7; margin-bottom: 20px; }
+    .feature-art {
+      min-height: 250px; background: var(--lime); color: var(--ink); display: grid; place-items: center;
+      position: relative; overflow: hidden; border-left: 3px solid var(--ink);
+      background-image: radial-gradient(var(--ink) 1.2px, transparent 1.2px); background-size: 10px 10px;
+    }
+    .feature-art strong { font: clamp(80px, 13vw, 170px)/.8 "Archivo Black", sans-serif; -webkit-text-stroke: 3px var(--ink); color: var(--pink); transform: rotate(-9deg); text-shadow: 7px 7px 0 white; }
+    .feature-art span { position: absolute; right: 10px; bottom: 10px; background: white; border: 2px solid var(--ink); padding: 7px; font-size: 10px; font-weight: 900; transform: rotate(4deg); }
+    .categories { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 17px; }
+    .category {
+      min-height: 215px; padding: 22px; border: 2px solid var(--ink); background: white;
+      box-shadow: 5px 5px 0 var(--ink); position: relative; overflow: hidden;
+      transition: transform .18s;
+    }
+    .category:hover { transform: translate(-2px,-3px) rotate(-.5deg); }
+    .category:nth-child(2n) { background: #e9f6ff; }
+    .category:nth-child(3n) { background: #f2ffd6; }
+    .category .num { font-size: 11px; font-weight: 800; letter-spacing: 2px; color: var(--blue-dark); }
+    .category h3 { font-size: clamp(25px, 3vw, 38px); line-height: .95; margin: 24px 0 10px; letter-spacing: -1px; }
+    .category p { max-width: 230px; color: #555960; font-size: 12px; line-height: 1.65; }
+    .category .arrow { position: absolute; bottom: 13px; right: 17px; font-size: 28px; font-weight: 800; }
+    .category .burst { position: absolute; right: -14px; top: 38px; width: 75px; height: 75px; background: var(--pink); border: 2px solid var(--ink); border-radius: 50%; opacity: .85; }
+    .reveal {
+      margin: 0 6% 60px; padding: 32px; display: flex; align-items: center; justify-content: space-between; gap: 25px;
+      background: var(--pink); border: 3px solid var(--ink); box-shadow: 7px 7px 0 var(--ink);
+    }
+    .status { display: inline-block; background: var(--paper); border: 2px solid var(--ink); padding: 6px 9px; font-size: 10px; font-weight: 900; letter-spacing: 2px; margin-bottom: 15px; }
+    .reveal h2 { font-size: clamp(34px, 5vw, 59px); line-height: .95; }
+    .reveal p { margin-top: 12px; font-size: 13px; line-height: 1.7; max-width: 470px; }
+    footer { padding: 25px 6%; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px; font-size: 10px; font-weight: 800; letter-spacing: 1px; }
+    @media (max-width: 760px) {
+      .nav { padding: 16px 5%; }
+      .nav-right a:not(.year-chip) { display: none; }
+      .hero { min-height: 650px; padding: 55px 5%; align-items: start; }
+      .hero::before { inset: 210px 0 0 9%; opacity: .85; clip-path: polygon(12% 0,100% 0,100% 100%,0 100%); }
+      .hero::after { background: linear-gradient(180deg, var(--paper) 0%, #f8f8f5f0 28%, #f8f8f59c 54%, transparent 100%); }
+      .hero-content { width: 100%; }
+      h1 { font-size: clamp(58px, 15vw, 100px); letter-spacing: -4px; }
+      .sticker { width: 75px; height: 75px; font-size: 9px; right: 6%; top: 54%; }
+      .section { padding: 48px 5%; }
+      .section-head { align-items: start; flex-direction: column; }
+      .feature { grid-template-columns: 1fr; }
+      .feature-art { min-height: 150px; border-left: 0; border-top: 3px solid var(--ink); }
+      .feature-art strong { font-size: 105px; }
+      .categories { grid-template-columns: 1fr; gap: 14px; }
+      .category { min-height: 180px; }
+      .reveal { margin: 0 5% 45px; padding: 24px; align-items: start; flex-direction: column; }
+    }
+  </style>
+</head>
+<body>
+  <div class="ticker"><span>SHAUNKETSU AWARDS 2026 ✦ ANIME ✦ MOVIES ✦ CHARACTERS ✦ MOMENTS ✦ MEDIA ✦ SHAUNKETSU AWARDS 2026 ✦ </span></div>
+  <header class="nav">
+    <a href="#" class="logo">SHAUN<span>KETSU</span></a>
+    <nav class="nav-right">
+      <a href="#categories">CATEGORIES</a>
+      <a href="#next-reveal">THE REVEALS</a>
+      <span class="year-chip">2026 EDITION ✦</span>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="sticker">MY YEAR.<br>MY PICKS.<br>NO SKIPS.</div>
+      <div class="hero-content">
+        <p class="eyebrow"><span class="dot"></span>THE YEAR-END MEDIA COLLAGE</p>
+        <h1>SHAUN<span class="blue">KETSU</span><span class="outline">AWARDS.</span></h1>
+        <span class="scribble">2026: THE RECAP ✦</span>
+        <p class="hero-sub">The shows. The characters. The scenes that rewired my brain. A personal year-end celebration of the media that made 2026 worth remembering.</p>
+        <div class="actions">
+          <a class="btn blue" href="#categories">EXPLORE THE AWARDS ↘</a>
+          <a class="btn" href="#next-reveal">WHAT'S NEXT? ✦</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-head">
+        <div><p class="eyebrow">✦ THE MAIN EVENT</p><h2>IN THE<br>SPOTLIGHT.</h2></div>
+        <p>Not an official industry award show. Just one anime fan's extremely passionate year-end ranking.</p>
+      </div>
+      <div class="feature">
+        <div class="feature-copy">
+          <span class="mini">FEATURED CATEGORY / 001</span>
+          <h3>BEST ANIME<br>OF 2026.</h3>
+          <p>Which series left the biggest mark? The top five will be revealed one spot at a time.</p>
+          <a class="btn" href="#next-reveal">FOLLOW THE COUNTDOWN ↗</a>
+        </div>
+        <div class="feature-art"><strong>TOP<br>5!</strong><span>THE LIST IS LOADING...</span></div>
+      </div>
+    </section>
+
+    <section class="section" id="categories">
+      <div class="section-head">
+        <div><p class="eyebrow">✦ THE BIG LIST</p><h2>PICK YOUR<br>POISON.</h2></div>
+        <p>Shows, characters, moments, and all the other things that made the year.</p>
+      </div>
+      <div class="categories">
+        <a class="category" href="#next-reveal"><span class="num">01 / SERIES</span><span class="burst"></span><h3>BEST<br>SHOWS</h3><p>The series I couldn't stop thinking about.</p><span class="arrow">↗</span></a>
+        <a class="category" href="#next-reveal"><span class="num">02 / CHARACTERS</span><span class="burst"></span><h3>CHARACTER<br>MVPs</h3><p>New faces who absolutely stole the show.</p><span class="arrow">↗</span></a>
+        <a class="category" href="#next-reveal"><span class="num">03 / MOMENTS</span><span class="burst"></span><h3>BEST<br>MOMENTS</h3><p>The scenes that had me yelling at my screen.</p><span class="arrow">↗</span></a>
+        <a class="category" href="#next-reveal"><span class="num">04 / FILM</span><span class="burst"></span><h3>MOVIES<br>THAT HIT</h3><p>The films that stayed with me after the credits.</p><span class="arrow">↗</span></a>
+        <a class="category" href="#next-reveal"><span class="num">05 / CRAFT</span><span class="burst"></span><h3>ANIMATION<br>FLEX</h3><p>Direction, movement, visuals, and pure artistry.</p><span class="arrow">↗</span></a>
+        <a class="category" href="#next-reveal"><span class="num">06 / THE GRAND PRIZE</span><span class="burst"></span><h3>MEDIA OF<br>THE YEAR</h3><p>The ultimate personal favorite of 2026.</p><span class="arrow">↗</span></a>
+      </div>
+    </section>
+
+    <section class="reveal" id="next-reveal">
+      <div>
+        <span class="status" id="reveal-status">COMING SOON ✦</span>
+        <h2 id="reveal-title">THE REVEALS<br>START HERE.</h2>
+        <p id="reveal-description">Rankings are being prepared. Come back as the list unfolds — one pick at a time.</p>
+      </div>
+      <button class="btn" id="reveal-button" type="button">PEEK AT THE FUTURE ↗</button>
+    </section>
+  </main>
+
+  <footer>
+    <span>© 2026 SHAUNKETSU AWARDS</span>
+    <span>BUILT WITH TOO MUCH LOVE FOR FICTIONAL PEOPLE ✦</span>
+  </footer>
+  <script>
+    const button = document.querySelector("#reveal-button");
+    const status = document.querySelector("#reveal-status");
+    const title = document.querySelector("#reveal-title");
+    const description = document.querySelector("#reveal-description");
+    let preview = false;
+
+    button.addEventListener("click", () => {
+      preview = !preview;
+      status.textContent = preview ? "PREVIEW MODE ✦" : "COMING SOON ✦";
+      title.innerHTML = preview ? "TOP FIVE.<br>PURE CHAOS." : "THE REVEALS<br>START HERE.";
+      description.textContent = preview
+        ? "This is the space for the next ranking reveal, complete with artwork, commentary, and your pick of the year."
+        : "Rankings are being prepared. Come back as the list unfolds — one pick at a time.";
+      button.textContent = preview ? "BACK TO THE TEASER ↗" : "PEEK AT THE FUTURE ↗";
+    });
+  </script>
+</body>
+</html>
